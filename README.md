@@ -5,6 +5,13 @@
 # Armkit
 
 Welcome to the armkit gem!
+Cloud infrastructure templates often contain repeated stanzas, information which must be loaded from external sources, and other functionality that would be easier handled as code, instead of configuration.
+
+Consider when a userdata script needs to be added to a Cloud infrastructure template. Traditionally, you would re-write the script by hand in a valid JSON format. Using the DSL, you can specify the file containing the script and generate the correct information at runtime.
+
+:UserData => base64(interpolate(file('userdata.sh')))
+
+Additionally, Cloud infrastructure templates are just massive JSON documents, making general readability and reusability an issue. The DSL allows not only a cleaner format (and comments!), but will also allow the same DSL template to be reused as needed.
 
 ## Installation
 
