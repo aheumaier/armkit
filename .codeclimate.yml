@@ -8,9 +8,9 @@ engines:
       - ruby
     checks:
       Similar code:
-        enabled: false
+        enabled: true
       Identical code:
-        enabled: false
+        enabled: true
 ratings:
   paths:
   - lib/**
