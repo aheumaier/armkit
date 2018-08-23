@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/aheumaier/armkit.svg?branch=master)](https://travis-ci.org/aheumaier/armkit)
+[![Build Status](https://travis-ci.org/aheumaier/armkit.svg?branch=development)](https://travis-ci.org/aheumaier/armkit)
 
 # Armkit
 
