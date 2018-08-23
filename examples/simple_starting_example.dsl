@@ -28,14 +28,14 @@ Template.parse do
       subnets [ "mySubnetA" ]
     end
 
-    VirtualMachine "VM-MultiNic" do
-      hardwareProfile 'defaultHwProfile'
-      storageProfile "storage_profile"
-      osProfile "os_profile"
-      networkProfile "network_profile"
-      type "Microsoft.Compute/virtualMachines"
-      tags { "a => b"}
-    end
+    # VirtualMachine "VM-MultiNic" do
+    #   hardwareProfile 'defaultHwProfile'
+    #   storageProfile "storage_profile"
+    #   osProfile "os_profile"
+    #   networkProfile "network_profile"
+    #   type "Microsoft.Compute/virtualMachines"
+    #   tags { "a => b"}
+    # end
 
   end
 

@@ -56,7 +56,7 @@ class Object
         if parent.nil?
           $out_hash[resourceHashKey] = resourceHashValue
         else
-          puts "Parent: " + parent.to_s if $DEBUG
+          puts "Parent: " + parent.to_s #if $DEBUG
           parent = parent.split('.')
           if parent.length == 1
             $out_hash[parent] = {}
