@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/aheumaier/armkit.svg?branch=development)](https://travis-ci.org/aheumaier/armkit)
+[![Maintainability](https://api.codeclimate.com/v1/badges/dbd2e0cd6179173de415/maintainability)](https://codeclimate.com/github/aheumaier/armkit/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/dbd2e0cd6179173de415/test_coverage)](https://codeclimate.com/github/aheumaier/armkit/test_coverage)
 
 # Armkit
 
