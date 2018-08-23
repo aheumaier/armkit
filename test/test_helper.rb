@@ -6,7 +6,7 @@ if ENV['COVERAGE']
   end
 end
 
-if ENV['CODECLIMATE_REPO_TOKEN']
+if ENV['CC_TEST_REPORTER_ID']
   require 'simplecov'
   SimpleCov.start do
     add_filter 'test'
