@@ -15,7 +15,7 @@ Template.parse do
             instanceCount 4
         end
     end
-    vatThree 466732
+    varThree 466732
   end
   
   Parameters.add do

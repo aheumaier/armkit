@@ -18,6 +18,10 @@ class Variables
     "[variable('#{name}')]"
   end
 
+  def self.to_json
+    Variables.registry.transform_values(&:value)
+  end
+
   def self.getVar var
     Variables.registry[ var.to_s.to_sym ]
   end

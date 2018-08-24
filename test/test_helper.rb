@@ -20,9 +20,6 @@ rescue
   false
 end
 
-
-
-
 # compares two json objects (Array, Hash, or String to be parsed) for equality.
 # Returns true if the objects are equivalent, false otherwise
 def compare_json(json1, json2)

@@ -19,9 +19,7 @@ class Template < TemplateBase
   end
 
   def to_json
-    Variables.registry.each do |k,v|
-      @variables[k] = v.value
-    end
+    @variables = Variables.to_json
     Resources.registry.each do |k,v|
       logger "Resource registry; "+v.inspect
       v.to_template
