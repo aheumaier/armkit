@@ -5,16 +5,16 @@ Template.parse do
   Variables.add do
     varOne "two"
     varTwo "two"
-    environmentSettings'{
-        myTest do
-          instanceSize "Small"
-          instanceCount 1
-        end
-        prod do
-            instanceSize "Large"
-            instanceCount 4
-        end
-    }'
+    environmentSettings JSON.parse('{
+        "myTest": {
+          "instanceSize": "Small",
+          "instanceCount": "1"
+        },
+        "prod": {
+            "instanceSize": "Large",
+            "instanceCount": "4"
+        }
+    }')
     varThree 466732
   end
   
@@ -22,11 +22,11 @@ Template.parse do
   end
 
   Resources.add do
-    #
-    # VirtualNetwork "myNewtwork" do
-    #   address_space  ['10.0.0.0/16']
-    #   subnets [ "mySubnetA" ]
-    # end
+
+    VirtualNetwork "myNewtwork" do
+      address_space  ['10.0.0.0/16']
+      subnets [ "mySubnetA" ]
+    end
     #
     # VirtualMachine "VM-MultiNic" do
     #   hardwareProfile 'defaultHwProfile'

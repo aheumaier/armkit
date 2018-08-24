@@ -37,12 +37,12 @@ class Template < TemplateBase
   end
 
   def dump
-    self.to_json
+    puts self.to_json
   end
 
   def Object.const_missing(name)
     if item = AzureResources.obj_cache.select{ |c| c.inspect =~ /::#{name}$/}
-      logger "DEBUG:  Object.const_missing Class #{name} not found: but #{item.first} exists in obj_cache"
+      puts "DEBUG:  Object.const_missing Class #{name} not found: but #{item.first} exists in obj_cache"
       item.first
     else
       raise "const_missing: Class #{name} not found"

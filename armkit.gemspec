@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "armkit/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "simple_starting_example.dsl"
+  spec.name          = "armkit"
   spec.version       = Armkit::VERSION
   spec.authors       = ["Andreas Heumaier"]
   spec.email         = ["andreas.heumaier@microsoft"]

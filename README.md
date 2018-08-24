@@ -34,7 +34,7 @@ Or install it yourself as:
 
 ## Usage
 
-Get started with a simpel example
+Get started with a simple example
 
 ```ruby
 #!/usr/bin/env ruby

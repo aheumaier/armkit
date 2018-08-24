@@ -71,4 +71,15 @@ class ArmkitTest < Minitest::Test
     assert compare_json(@template_add.to_json, @is_json_expected)
   end
 
+  # def test_that_unknown_constants_are_found_from_azure_objects
+  #   Template.add do
+  #     Resources.add do
+  #       vnet = VirtualNetwork do
+  #         test "test"
+  #       end
+  #     end
+  #   end
+  #   assert vnet.instance_of?('Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetwork')
+  # end
 end
+
