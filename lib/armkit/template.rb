@@ -37,7 +37,7 @@ class Template < TemplateBase
   end
 
   def dump
-    puts self.to_json
+    self.to_json
   end
 
   def Object.const_missing(name)
