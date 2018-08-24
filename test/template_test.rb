@@ -15,6 +15,19 @@ class ArmkitTest < Minitest::Test
       Outputs.new do
       end
     end
+    @is_json_expected = '{
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "variables": {
+        },
+        "parameters": {
+        },
+        "resources": [
+
+        ],
+        "outputs": {
+        }
+    }'
   end
 
   def test_that_template_add_returns_template_class
@@ -43,6 +56,19 @@ class ArmkitTest < Minitest::Test
   def test_that_template_has_initialized_resources_instance_var
     assert @template_add.instance_variable_defined?(:@resources)
     assert @template_add.instance_variable_get(:@resources).instance_of?(Array)
+  end
+
+  def test_that_template_has_initialized_resources_instance_var
+    assert @template_add.instance_variable_defined?(:@outputs)
+    assert @template_add.instance_variable_get(:@outputs).instance_of?(Hash)
+  end
+
+  def test_that_template_responds_to_json
+    assert @template_add.respond_to?('to_json')
+  end
+
+  def test_that_template_renders_valid_json_structure
+    assert compare_json(@template_add.to_json, @is_json_expected)
   end
 
 end

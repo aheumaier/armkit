@@ -25,7 +25,6 @@ class Template < TemplateBase
     Resources.registry.each do |k,v|
       logger "Resource registry; "+v.inspect
       v.to_template
-      # pp $out_hash
       @resources << $out_hash
     end
     hash = {
