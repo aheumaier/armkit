@@ -18,6 +18,7 @@ class ArmkitTest < Minitest::Test
     assert Object.new.respond_to?('to_template')
   end
 
+  #TODO Fix dummy test_that_hash_renders_insert_at
   def test_that_hash_renders_insert_at
     assert true
   end

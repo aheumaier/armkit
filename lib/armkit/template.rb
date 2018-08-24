@@ -15,7 +15,7 @@ class Template < TemplateBase
   end
 
   def self.parse(&block)
-    Template.new(&block).dump
+    Template.new(&block).to_json
   end
 
   def to_json
@@ -37,7 +37,7 @@ class Template < TemplateBase
   end
 
   def dump
-    to_json
+    puts self.to_json
   end
 
   def Object.const_missing(name)

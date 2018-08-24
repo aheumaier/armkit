@@ -16,23 +16,20 @@ require 'pp'
 require 'json'
 
 module Armkit
-
-  $out_hash = {"properties" => {}}
+  $out_hash = { "properties" => {} }
   $DEBUG = false
-
-
 end
 
-class String
-  def underscore
-    self.gsub(/::/, '/').
-        gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
-        gsub(/([a-z\d])([A-Z])/,'\1_\2').
-        tr("-", "_").
-        downcase
-  end
-end
-
+# TODO This seems ununsed code  - wait for full test coverage
+# class String
+#   def underscore
+#     self.gsub(/::/, '/').
+#         gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+#         gsub(/([a-z\d])([A-Z])/,'\1_\2').
+#         tr("-", "_").
+#         downcase
+#   end
+# end
 
 class Hash
   def insert_at(nested_hash,path_array,kvPair)
@@ -88,6 +85,4 @@ class Object
       end
     end # end each.instance_variables
   end
-
 end # end of class
-

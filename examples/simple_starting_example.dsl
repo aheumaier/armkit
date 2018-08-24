@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require_relative "../lib/armkit"
-Template.parse do
+t = Template.parse do
   
   Variables.add do
     varOne "two"
@@ -43,6 +43,9 @@ Template.parse do
   end
 
 end
+
+
+puts t
 
 
 
