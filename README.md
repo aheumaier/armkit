@@ -15,6 +15,8 @@ Additionally, Cloud infrastructure templates are just massive JSON documents, ma
 
 ## Installation
 
+*This requires Ruby 2.4 upwards*
+
 Add this line to your application's Gemfile:
 
 ```ruby
