@@ -43,7 +43,6 @@ class Hash
       puts level
       if path_array.length >= 1
         puts" Lenghth ist 1"
-
         nested_hash[level].merge(kvPair)
         puts nested_hash.inspect
         return nested_hash
@@ -60,7 +59,6 @@ class Object
   def to_template parent = nil
     resourceMapper = self.class.mapper
     resourceMapperKeys = resourceMapper[:type][:model_properties].keys
-
     self.instance_variables.each do |resourceAttribute|
       strippedResAttrSymbl = resourceAttribute.to_s.delete('@').to_sym
 

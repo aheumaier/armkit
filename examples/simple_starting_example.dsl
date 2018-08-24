@@ -5,7 +5,7 @@ Template.parse do
   Variables.add do
     varOne "two"
     varTwo "two"
-    environmentSettings do
+    environmentSettings'{
         myTest do
           instanceSize "Small"
           instanceCount 1
@@ -14,7 +14,7 @@ Template.parse do
             instanceSize "Large"
             instanceCount 4
         end
-    end
+    }'
     varThree 466732
   end
   
