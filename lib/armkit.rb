@@ -17,9 +17,10 @@ require 'json'
 
 module Armkit
 
-  def self.getVar var
-    Variables.registry[ var.to_s.to_sym ]
-  end
+  $out_hash = {"properties" => {}}
+  $DEBUG = false
+
+
 end
 
 class String
@@ -32,9 +33,28 @@ class String
   end
 end
 
-$out_hash = {"properties" => {}}
-$DEBUG = false
 
+class Hash
+  def insert_at(nested_hash,path_array,kvPair)
+    puts ""
+    puts "Calling Hash.insert_at(#{nested_hash}, #{path_array}, #{kvPair})"
+    puts "Start at #{ path_array}"
+    path_array.each do |level|
+      puts level
+      if path_array.length >= 1
+        puts" Lenghth ist 1"
+
+        nested_hash[level].merge(kvPair)
+        puts nested_hash.inspect
+        return nested_hash
+      else
+        a = path_array[1..path_array.length]
+        puts a.inspect
+        insert_at(nested_hash[level], a, kvPair)
+      end
+    end
+  end
+end
 
 class Object
   def to_template parent = nil
@@ -56,7 +76,7 @@ class Object
         if parent.nil?
           $out_hash[resourceHashKey] = resourceHashValue
         else
-          puts "Parent: " + parent.to_s #if $DEBUG
+          puts "Parent: " + parent.to_s if $DEBUG
           parent = parent.split('.')
           if parent.length == 1
             $out_hash[parent] = {}

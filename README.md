@@ -36,6 +36,7 @@ Get started with a simpel example
 ```ruby
 #!/usr/bin/env ruby
 require_relative "../lib/armkit"
+
 Template.parse do
 
   Variables.add do
@@ -70,7 +71,6 @@ Template.parse do
       osProfile "os_profile"
       networkProfile "network_profile"
       type "Microsoft.Compute/virtualMachines"
-      tags { "a => b"}
     end
 
   end

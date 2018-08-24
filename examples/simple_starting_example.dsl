@@ -22,20 +22,20 @@ Template.parse do
   end
 
   Resources.add do
-
-    VirtualNetwork "myNewtwork" do
-      address_space  ['10.0.0.0/16']
-      subnets [ "mySubnetA" ]
-    end
-
-    VirtualMachine "VM-MultiNic" do
-      hardwareProfile 'defaultHwProfile'
-      storageProfile "storage_profile"
-      osProfile "os_profile"
-      networkProfile "network_profile"
-      type "Microsoft.Compute/virtualMachines"
-      tags '{ "a => b"}'
-    end
+    #
+    # VirtualNetwork "myNewtwork" do
+    #   address_space  ['10.0.0.0/16']
+    #   subnets [ "mySubnetA" ]
+    # end
+    #
+    # VirtualMachine "VM-MultiNic" do
+    #   hardwareProfile 'defaultHwProfile'
+    #   storageProfile "storage_profile"
+    #   osProfile "os_profile"
+    #   networkProfile "network_profile"
+    #   type "Microsoft.Compute/virtualMachines"
+    #   tags '{ "a => b"}'
+    # end
 
   end
 

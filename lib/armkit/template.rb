@@ -23,9 +23,9 @@ class Template < TemplateBase
       @variables[k] = v.value
     end
     Resources.registry.each do |k,v|
-      puts "Resource registry; "+v.inspect
+      logger "Resource registry; "+v.inspect
       v.to_template
-      pp $out_hash
+      # pp $out_hash
       @resources << $out_hash
     end
     hash = {
@@ -40,12 +40,12 @@ class Template < TemplateBase
   end
 
   def dump
-    puts self.to_json
+    self.to_json
   end
 
   def Object.const_missing(name)
     if item = AzureResources.obj_cache.select{ |c| c.inspect =~ /::#{name}$/}
-      puts "DEBUG:  Object.const_missing Class #{name} not found: but #{item.first} exists in obj_cache"
+      logger "DEBUG:  Object.const_missing Class #{name} not found: but #{item.first} exists in obj_cache"
       item.first
     else
       raise "const_missing: Class #{name} not found"

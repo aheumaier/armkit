@@ -4,7 +4,7 @@ class Resources
   @@obj_cache = []
 
   def initialize(&block)
-    puts "INFO: Create #{self.class.to_s} Instance"
+    puts "INFO: Create #{self.class.to_s} Instance" if $DEBUG
     factory = ResourceFactoryProxy.new
     factory.instance_eval(&block)
   end

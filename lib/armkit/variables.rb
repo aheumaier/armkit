@@ -18,59 +18,72 @@ class Variables
     "[variable('#{name}')]"
   end
 
+  def self.getVar var
+    Variables.registry[ var.to_s.to_sym ]
+  end
+
   def self.registry
     @@registry
   end
 
-  def self.render
-  end
-
-
   def self.method_missing(m, *args, &block)
     if block_given?
+      puts ""
       puts "DEBUG:  Variables.method_missing called #{m} with #{args.inspect} and #{block}"
       if @parent.nil?
         @parent = [m]
       else
-        @parent << m
+        puts "@previousParents: "+@parent.inspect
+        if @previousBlock == false
+
+          @parent = @parent.slice(0..-2)
+
+        else
+          @parent << m
+        end
+        puts "@parents: "+@parent.inspect
       end
       @previousBlock = true
       instance_eval(&block)
     else
+      puts ""
       puts "DEBUG:  Variables.method_missing called #{m} with #{args.inspect} and no block"
       @previousBlock = @previousBlock || false
       if @parent
-
         if @previousBlock == true
+          puts "  @previousBlock is set : "+ @previousBlock.inspect
 
-          puts "From previous Block"
-          @h = {m => args.join }
+          @currentHash = {m => args.join }
           @parent.reverse.each do |element|
-            @h = {element => @h }
+            @currentHash = {element => @currentHash }
           end
-          pp @h
-          var = Variables.new(m, @h)
+          puts "  @currentHash :" + @currentHash.inspect
+          var = Variables.new(m, @currentHash)
           @@registry[@parent.first] = var
 
         else
+          puts "  @previousBlock is set : "+ @previousBlock.inspect
 
-          puts "From no previous block"
-          @h = {m => args.join }
+          @currentHash = {m => args.join }
+          puts "  @parents : " + @parent.inspect
           @parent.reverse.each do |element|
-            @h = {element => @h }
+            @currentHash = {element => @currentHash }
           end
-          pp @h
-          var = Variables.new(m, @h_old.update(@h))
-          pp @h_old.update(@h)
+          puts "  @currentHash :" +  @currentHash.inspect
+          puts "  @previousHash :" +  @previousHash.inspect
+
+          var = Variables.new(m, @previousHash.insert_at(@currentHash, @parent, {m => args.join } ))
+
+          puts "  @resultingHash: "+ @previousHash.insert_at(@currentHash, @parent, {m => args.join } ).inspect
+
           @@registry[@parent.first] = var
 
         end
-        @h_old = @h
-
+        @previousHash = @currentHash
         @previousBlock = false
 
       else
-puts @previousBlock
+        puts "  @previousBlock is set : "+ @previousBlock.inspect
         var = Variables.new(m, args.join )
         @@registry[var.name] = var
       end

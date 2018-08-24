@@ -9,9 +9,7 @@ class TemplateBase
   end
 
   def self.add(&block)
-    p = TemplateBase.new(&block)
-    puts p.inspect
-    return p
+    TemplateBase.new(&block)
   end
 
   def logger message, level='info'
