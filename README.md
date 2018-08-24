@@ -5,6 +5,7 @@
 # Armkit
 
 Welcome to the armkit gem!
+
 Cloud infrastructure templates often contain repeated stanzas, information which must be loaded from external sources, and other functionality that would be easier handled as code, instead of configuration.
 
 Consider when a userdata script needs to be added to a Cloud infrastructure template. Traditionally, you would re-write the script by hand in a valid JSON format. Using the DSL, you can specify the file containing the script and generate the correct information at runtime.
@@ -15,7 +16,7 @@ Additionally, Cloud infrastructure templates are just massive JSON documents, ma
 
 ## Installation
 
-*This requires Ruby 2.4 upwards*
+**This requires Ruby 2.4 upwards**
 
 Add this line to your application's Gemfile:
 
