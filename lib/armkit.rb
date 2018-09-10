@@ -52,6 +52,8 @@ class Hash
   end
 end
 
+# TODO this next lines really have to be refactored. Maybe this is obsolet when moving serialization logic to core classes
+#
 class Object
   def to_template parent = nil
     resourceMapper = self.class.mapper
@@ -67,7 +69,7 @@ class Object
       unless resourceHashValue.is_a?(String) || resourceHashValue.is_a?(TrueClass) || resourceHashValue.is_a?(Array)
         resourceHashValue.to_template  resourceHashKey
       else
-        # TODO this next lines really have to be refactored
+
         if parent.nil?
           $out_hash[resourceHashKey] = resourceHashValue
         else
