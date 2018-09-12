@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ArmkitTest < Minitest::Test
+class TemplateTest < Minitest::Test
 
   def setup
     @template_parse = Template.parse do
