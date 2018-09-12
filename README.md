@@ -2,7 +2,9 @@
 
 # Armkit
 
-Welcome to the armkit gem!
+Welcome to the armkit gem! Armkit is an infrastructure modeling framework that allows you to define your cloud resources using an imperative programming interface.
+
+The Armkit is basically a wrapper around [ARM Templating](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates), which abstracts ARM template definitions of Azure resources into an object-oriented library. This allows developers to define higher-level abstractions of resources, which can easily be reused. It also allows for deeper integration into application code and more dynamic generation of resources. The Azure Armkit can then be used to render the higher-level definitions into templates. A developer can also choose to generate a diff of resources to create or update and directly deploy resource definitions to the cloud(not implmented yet). Armkit will even take care of generating additional template resources to supply the necessary deployment infrastructure (e.g.: a storgae bucket to hold zipped Azure functions).
 
 ## Installation
 
