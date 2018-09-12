@@ -1,21 +1,21 @@
 #!/usr/bin/env ruby
 require_relative "../lib/armkit"
-Template.parse do
+t = Template.parse do
   
   Variables.add do
     varOne "two"
     varTwo "two"
-    environmentSettings do
-        myTest do
-          instanceSize "Small"
-          instanceCount 1
-        end
-        prod do
-            instanceSize "Large"
-            instanceCount 4
-        end
-    end
-    vatThree 466732
+    environmentSettings JSON.parse('{
+        "myTest": {
+          "instanceSize": "Small",
+          "instanceCount": "1"
+        },
+        "prod": {
+            "instanceSize": "Large",
+            "instanceCount": "4"
+        }
+    }')
+    varThree 466732
   end
   
   Parameters.add do
@@ -27,15 +27,15 @@ Template.parse do
       address_space  ['10.0.0.0/16']
       subnets [ "mySubnetA" ]
     end
-
-    VirtualMachine "VM-MultiNic" do
-      hardwareProfile 'defaultHwProfile'
-      storageProfile "storage_profile"
-      osProfile "os_profile"
-      networkProfile "network_profile"
-      type "Microsoft.Compute/virtualMachines"
-      tags { "a => b"}
-    end
+    #
+    # VirtualMachine "VM-MultiNic" do
+    #   hardwareProfile 'defaultHwProfile'
+    #   storageProfile "storage_profile"
+    #   osProfile "os_profile"
+    #   networkProfile "network_profile"
+    #   type "Microsoft.Compute/virtualMachines"
+    #   tags '{ "a => b"}'
+    # end
 
   end
 
@@ -43,6 +43,9 @@ Template.parse do
   end
 
 end
+
+# usually you dont need that
+puts t
 
 
 

@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/aheumaier/armkit.svg?branch=master)](https://travis-ci.org/aheumaier/armkit)
+[![Build Status](https://travis-ci.org/aheumaier/armkit.svg?branch=development)](https://travis-ci.org/aheumaier/armkit)
+[![Maintainability](https://api.codeclimate.com/v1/badges/dbd2e0cd6179173de415/maintainability)](https://codeclimate.com/github/aheumaier/armkit/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/dbd2e0cd6179173de415/test_coverage)](https://codeclimate.com/github/aheumaier/armkit/test_coverage)
 
 # Armkit
 
@@ -6,7 +8,17 @@ Welcome to the armkit gem! Armkit is an infrastructure modeling framework that a
 
 The Armkit is basically a wrapper around [ARM Templating](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates), which abstracts ARM template definitions of Azure resources into an object-oriented library. This allows developers to define higher-level abstractions of resources, which can easily be reused. It also allows for deeper integration into application code and more dynamic generation of resources. The Azure Armkit can then be used to render the higher-level definitions into templates. A developer can also choose to generate a diff of resources to create or update and directly deploy resource definitions to the cloud(not implmented yet). Armkit will even take care of generating additional template resources to supply the necessary deployment infrastructure (e.g.: a storgae bucket to hold zipped Azure functions).
 
+Cloud infrastructure templates often contain repeated stanzas, information which must be loaded from external sources, and other functionality that would be easier handled as code, instead of configuration.
+
+Consider when a userdata script needs to be added to a Cloud infrastructure template. Traditionally, you would re-write the script by hand in a valid JSON format. Using the DSL, you can specify the file containing the script and generate the correct information at runtime.
+
+:UserData => base64(interpolate(file('userdata.sh')))
+
+Additionally, Cloud infrastructure templates are just massive JSON documents, making general readability and reusability an issue. The DSL allows not only a cleaner format (and comments!), but will also allow the same DSL template to be reused as needed.
+
 ## Installation
+
+**This requires Ruby 2.4 upwards**
 
 Add this line to your application's Gemfile:
 
@@ -24,11 +36,12 @@ Or install it yourself as:
 
 ## Usage
 
-Get started with a simpel example
+Get started with a simple example
 
 ```ruby
 #!/usr/bin/env ruby
 require_relative "../lib/armkit"
+
 Template.parse do
 
   Variables.add do
@@ -63,7 +76,6 @@ Template.parse do
       osProfile "os_profile"
       networkProfile "network_profile"
       type "Microsoft.Compute/virtualMachines"
-      tags { "a => b"}
     end
 
   end
