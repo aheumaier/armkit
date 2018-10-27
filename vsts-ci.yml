@@ -1,0 +1,34 @@
+# Ruby
+# Package your Ruby application.
+# Add steps that install rails, analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/vsts/pipelines/languages/ruby
+
+# Run the pipeline with multiple Python versions
+strategy:
+  matrix:
+    Ruby23:
+      ruby.version: '2.3.7'
+    Ruby24:
+      ruby.version: '2.4.4'
+    Ruby25:
+      ruby.version: '2.5.1'
+  # Increase the maxParallel value to simultaneously run the job for all versions in the matrix (max 10 for free open-source)
+  maxParallel: 4
+
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+- task: UseRubyVersion@0
+  inputs:
+    versionSpec: '$(ruby.version)'
+    architecture: 'x64'
+
+- script: |
+    gem install bundler
+    bundle install --retry=3 --jobs=4
+  displayName: 'bundle install'
+
+- script: bundle exec rake test 
+  displayName: 'bundle exec rake test '
