@@ -62,10 +62,14 @@ class VariablesTest < Minitest::Test
   end
 
   def test_that_variables_responds_to_json
-    assert @variables_add_simple.respond_to?("to_json")
+    assert @variables_add_simple.respond_to?("to_hash")
+  end
+  
+  def test_that_variables_to_hash_returns_hash
+    assert @variables_add_simple.to_hash.instance_of?(Hash)
   end
 
-  def test_that_variables_class_responds_to_json
+  def test_that_variables_class_responds_to_render_json
     assert Variables.respond_to?("render_json")
   end
 
