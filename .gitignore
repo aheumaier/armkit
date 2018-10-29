@@ -8,3 +8,4 @@
 /tmp/
 .idea/*
 coverage
+Gemfile.lock
